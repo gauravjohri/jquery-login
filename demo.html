@@ -1,0 +1,51 @@
+<script src="jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+
+var on=navigator.onLine;
+if(on==true)
+{
+//alert("online");
+}
+else
+{
+//alert("offline");
+}
+
+var luname=localStorage.getItem("uname");
+var lpwd=localStorage.getItem("pwd");
+	$("#uname").html(luname);
+    $("#login").click(function(){
+	
+	var iuname=prompt("enter uname");
+	var ipwd=prompt("enter password");
+	
+	if(iuname!=null && ipwd!=null  )
+	{
+    localStorage.setItem("uname",iuname);
+	localStorage.setItem("pwd",ipwd);
+	}
+	
+	var luname=localStorage.getItem("uname");
+	var lpwd=localStorage.getItem("pwd");
+	if(luname=="admin" && lpwd=="admin@12")
+	{
+	$("#uname").html(luname);
+	}
+	else
+	{
+	$("#uname").html("invalid uname");
+	}
+
+	
+    });
+	
+	$("#logout").click(function(){
+	localStorage.clear();
+	});
+});
+</script>
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+Welcome <span id="uname"></span>!
